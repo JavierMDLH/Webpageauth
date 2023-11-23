@@ -38,7 +38,7 @@
       width: 100%;
     }
 
-    #result {
+    #loginResult, #registerResult {
       margin-top: 20px;
       text-align: center;
     }
@@ -56,7 +56,7 @@
     <input type="button" value="Iniciar Sesión" onclick="login()">
   </form>
 
-  <div id="result"></div>
+  <div id="loginResult"></div>
 
   <h1>Registrarse</h1>
   <form id="registerForm">
@@ -76,13 +76,19 @@
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
 
-      // Aquí normalmente harías una llamada AJAX a un servidor que maneje la autenticación con la base de datos
-
-      // Ejemplo simulado
-      if (username === "usuario" && password === "contraseña") {
-        document.getElementById("result").innerHTML = "Inicio de sesión exitoso";
+      // Llamada AJAX para autenticación
+      if (username && password) {
+        fetch(`/login?username=${username}&password=${password}`)
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("loginResult").innerHTML = data;
+          })
+          .catch(err => {
+            console.error(err);
+            document.getElementById("loginResult").innerHTML = 'Error en la solicitud';
+          });
       } else {
-        document.getElementById("result").innerHTML = "Error en las credenciales";
+        document.getElementById("loginResult").innerHTML = 'Por favor, completa todos los campos';
       }
     }
 
@@ -90,13 +96,19 @@
       var newUsername = document.getElementById("newUsername").value;
       var newPassword = document.getElementById("newPassword").value;
 
-      // Aquí normalmente harías una llamada AJAX a un servidor que maneje el registro en la base de datos
-
-      // Ejemplo simulado
-      if (newUsername !== "" && newPassword !== "") {
-        document.getElementById("registerResult").innerHTML = "¡Usuario registrado correctamente!";
+      // Llamada AJAX para registro
+      if (newUsername && newPassword) {
+        fetch(`/register?newUsername=${newUsername}&newPassword=${newPassword}`)
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById("registerResult").innerHTML = data;
+          })
+          .catch(err => {
+            console.error(err);
+            document.getElementById("registerResult").innerHTML = 'Error en la solicitud';
+          });
       } else {
-        document.getElementById("registerResult").innerHTML = "Error al registrar el usuario";
+        document.getElementById("registerResult").innerHTML = 'Por favor, completa todos los campos';
       }
     }
   </script>

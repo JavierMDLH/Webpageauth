@@ -3,7 +3,7 @@ const mysql = require('mysql');
 
 const app = express();
 
-// Configura la conexión a la base de datos RDS
+// Configuración de la conexión a la base de datos RDS
 const connection = mysql.createConnection({
   host: 'database-2.cueyooy1kuvm.us-east-1.rds.amazonaws.com',
   user: 'admin',
@@ -41,11 +41,42 @@ app.get('/login', (req, res) => {
   });
 });
 
+// Ruta para el registro de usuarios
+app.get('/register', (req, res) => {
+  const { newUsername, newPassword } = req.query;
+
+  // Verifica si el usuario ya existe en la base de datos
+  const checkQuery = `SELECT * FROM users WHERE username='${newUsername}'`;
+  connection.query(checkQuery, (err, results) => {
+    if (err) {
+      res.status(500).send('Error de servidor');
+      return;
+    }
+
+    if (results.length > 0) {
+      res.status(409).send('El usuario ya existe');
+      return;
+    }
+
+    // Si el usuario no existe, procede con el registro
+    const registerQuery = `INSERT INTO users (username, password) VALUES ('${newUsername}', '${newPassword}')`;
+    connection.query(registerQuery, (err, results) => {
+      if (err) {
+        res.status(500).send('Error de servidor');
+        return;
+      }
+      
+      res.status(201).send('Usuario registrado exitosamente');
+    });
+  });
+});
+
 // Iniciar el servidor en el puerto 3000
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
 });
+
 
 // Ruta para mostrar una página HTML
 app.get('/', (req, res) => {
