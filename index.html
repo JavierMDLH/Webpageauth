@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Control de Acceso</title>
+</head>
+<body>
+  <h1>Iniciar Sesión</h1>
+  <form id="loginForm">
+    <label for="username">Usuario:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Contraseña:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+    <input type="button" value="Iniciar Sesión" onclick="login()">
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function login() {
+      // Simulando la autenticación
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Aquí normalmente harías una llamada AJAX a un servidor que maneje la autenticación con la base de datos
+
+      // Ejemplo simulado
+      if (username === "usuario" && password === "contraseña") {
+        document.getElementById("result").innerHTML = "Inicio de sesión exitoso";
+      } else {
+        document.getElementById("result").innerHTML = "Error en las credenciales";
+      }
+    }
+  </script>
+</body>
+</html>
