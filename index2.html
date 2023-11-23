@@ -1,17 +1,266 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title> </title>
-        <style>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>El Metaverso: una  Nueva Realidad</title>
+  <style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e2e2e2;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        </style>
-    </head>
+    #particles-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
 
-    <body>
-        <h1>Welcome to the Home Page</h1>
-        <script>
-            // This is a JavaScript code snippet that will be executed when the page loads
-        </script>
-    </body>
-    
-</html>
+    #particles {
+      width: 100%;
+      height: 100%;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: #4CAF50; /* Color de las partículas */
+      border-radius: 50%;
+      pointer-events: none;
+      animation: moveParticle linear infinite;
+    }
+
+    @keyframes moveParticle {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 4em;
+      font-weight: bolder;
+      color: #4CAF50;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(45deg, #4CAF50, #2196F3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes colorChange {
+        0% {
+            color: #4CAF50;
+        }
+        50% {
+            color: #FF5722;
+        }
+        100% {
+            color: #2196F3;
+        }
+    }
+
+    h1.animated {
+        animation-name: colorChange;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+
+    .info-box {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      width: 50%;
+      margin-left: 10%;
+      border-radius: 50px;
+    }
+
+    .info-box1 {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      width: 50%;
+      margin-left: 30%;
+      border-radius: 50px;
+    }
+
+    .info-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    .info-box1:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h2, h3 {
+      color: #009688;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-bottom: 10px;
+    }
+
+    ul li {
+      margin-bottom: 5px;
+    }
+
+    ul, li {
+      list-style: disc;
+    }
+
+    a {
+      color: #2196F3;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #1976D2;
+    }
+
+    /* Animación de cambio de color en enlaces */
+
+    @keyframes colorChange {
+      0% {
+        color: #2196F3;
+      }
+      50% {
+        color: #FF5722;
+      }
+      100% {
+        color: #4CAF50;
+      }
+    }
+
+    a.animated {
+      animation-name: colorChange;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+    }
+  </style>
+  <!-- Agregar la fuente Montserrat desde Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+</head>
+<body>
+
+<h1>El Metaverso: una Nueva Realidad</h1>
+
+<div class="info-box">
+  <h2>Definición de metaverso</h2>
+  <p>El metaverso es un concepto que se refiere a un mundo virtual compartido, persistente y en tiempo real. En el metaverso, los usuarios pueden interactuar entre sí, crear contenido y experimentar nuevas realidades.</p>
+  <p>El metaverso aún está en sus primeras etapas de desarrollo, pero tiene el potencial de revolucionar la forma en que interactuamos con el mundo que nos rodea. Podría utilizarse para el trabajo, la educación, el entretenimiento y mucho más.</p>
+  <p>El término metaverso fue acuñado por el novelista Neal Stephenson en su libro Snow Crash, publicado en 1992. En la novela, el metaverso es un mundo virtual en el que los usuarios pueden escapar de la realidad.</p>
+  <p>En los últimos años, el metaverso ha ganado popularidad debido al desarrollo de nuevas tecnologías, como la realidad virtual (VR) y la realidad aumentada (AR). Estas tecnologías permiten a los usuarios crear experiencias más inmersivas y envolventes en el metaverso.</p>
+</div>
+
+<div class="info-box1">
+  <h2>Características del metaverso</h2>
+  <ul>
+    <li>Compartido: El metaverso es un mundo virtual compartido por todos los usuarios.</li>
+    <li>Persistente: El metaverso existe de forma persistente, lo que significa que no desaparece cuando un usuario se desconecta.</li>
+    <li>En tiempo real: El metaverso se experimenta en tiempo real.</li>
+  </ul>
+</div>
+
+<div class="info-box">
+    <h2>Posibles usos del metaverso</h2>
+    <p>El metaverso tiene el potencial de revolucionar la forma en que interactuamos con el mundo que nos rodea. Podría utilizarse para el trabajo, la educación, el entretenimiento y mucho más.</p>
+
+    <ul>
+      <li>Educación: El metaverso podría utilizarse para crear entornos de aprendizaje más inmersivos y atractivos. Los estudiantes podrían interactuar con objetos virtuales, participar en simulaciones y trabajar en proyectos colaborativos. 
+        <p>Por ejemplo, los estudiantes de ingeniería podrían utilizar el metaverso para experimentar con nuevos diseños de productos. Los estudiantes de medicina podrían utilizar el metaverso para practicar cirugías. Y los estudiantes de historia podrían utilizar el metaverso para visitar lugares históricos.</p>
+      </li>
+      <li>Trabajo: El metaverso podría utilizarse para crear entornos de trabajo más flexibles y colaborativos. Los empleados podrían trabajar desde cualquier lugar del mundo y colaborar con colegas de todo el mundo.
+        <p>Por ejemplo, los empleados de una empresa podrían utilizar el metaverso para tener reuniones, trabajar en proyectos y colaborar en ideas.</p>
+      </li>
+      <li>Entretenimiento: El metaverso podría utilizarse para crear nuevos tipos de experiencias de entretenimiento. Los usuarios podrían jugar juegos, ver películas y asistir a conciertos en un entorno virtual.
+        <p>Por ejemplo, los usuarios podrían jugar juegos de realidad virtual que les permitan explorar mundos virtuales o participar en aventuras emocionantes. Los usuarios podrían ver películas en un cine virtual que les permita sentirse como si estuvieran en la sala de cine. Y los usuarios podrían asistir a conciertos virtuales que les permitan ver a sus artistas favoritos en persona.</p>
+      </li>
+      <li>Socialización: El metaverso podría utilizarse para crear nuevos espacios para la socialización. Los usuarios podrían reunirse con amigos y familiares, asistir a eventos y participar en actividades sociales.
+        <p>Por ejemplo, los usuarios podrían reunirse con amigos en un bar virtual para charlar o jugar juegos. Los usuarios podrían asistir a eventos virtuales como conciertos o conferencias. Y los usuarios podrían participar en actividades sociales como clases de baile o yoga.</p>
+      </li>
+    </ul>
+</div>
+
+<div class="info-box1">
+    <h2>Retos del metaverso</h2>
+    <ul>
+      <li>El metaverso aún está en sus primeras etapas de desarrollo, por lo que existen algunos retos que deben superar.</li>
+      <li>Interoperabilidad: Los diferentes mundos virtuales del metaverso deben ser capaces de interactuar entre sí para que los usuarios puedan moverse libremente entre ellos.</li>
+    </ul>
+</div>
+
+<div class="info-box">
+  <h2>Video Relacionado</h2>
+  <video width="640" height="360" controls>
+    <source src="https://pruebabucketjmdl.s3.us-east-1.amazonaws.com/Qu%C3%A9%20es%20el%20metaverso%20y%20cu%C3%A1les%20son%20las%20dudas%20que%20genera%20este%20mundo%20%E2%80%9Cgemelo%E2%80%9D%20digital%20_%20BBC%20Mundo.mp4?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCID72ymJ4oKfDNIXjIiB33ugNBNAGcQ92lF0EuA51HpWVAiA4FddkcPkjq4EydE0bbRlKHM%2BEoTaeI99cxulkOE%2Bgzir1Agg%2BEAAaDDk0MTE4MzU2MTI1NiIMtXpIFWC0hUOrMVgpKtICeGuaK7SmaEOzeKjBkuAauwMXmoTxXXn%2Bc8Z05QWab0Aa0sRhjPG6V7aPGOA5jH4G9NXw%2FdqU0m42ShuqM59K3OZFihR3FdkFkivS%2BJBNVTLkHOkbxKO1qwklw5KnxnH%2FzJiazCwnbSKnhTVvglvhvUCUQhPBl%2B%2BtRPad9lKassQEjxqeO6l6PSnzVEQNRX9wMTVD%2BfFwqQBAVyEZZngPe7srYPrX6yhOPXCSHUjb6Q31cA8MkaBH7kze0js6DUxxMhqNKGQy6w2TZR3hkcGNV4iFnwE3seFfJ0qFI0ZTrVsxX4ZnEmF020UrlKYa4kZAo4dVXObF3faGt%2FmWhTfW0z0Eni1bSVsxHBRX0SWAm%2Bort7LVKzMOxrf3NZLHdIKHjEaREmGc7AQAfslKfL%2F7D39LBlRh99adRivmY0vo%2FDYO1%2BKA%2Bh9Vy3Mre8nPRx4GwqswgLX7qgY6iAL1jBzK9oJiUQ6htOH9Qf0osFGUDsvv1h1NlnUFXwzjbJ3o7%2BCxbtE6ZouP%2BxqAekOd6sGUJPHjbCbNPlTMn2ruVIulgZ7xgwG6p12kE9y3dqa5C7UENc6%2BiwauXYp6q5z5hdL%2FJgq9wCdl%2FCnMl6kJMrCf9o9Ub06ZQAfIVdubKatDYicfeEBwedx2pOOcP8Nl7pjHi%2Fuw4kEHrwEqRronIUN7x2khgmuoI9CXJriqHGyI9YeWS%2BDx2g8Xb2%2FVP7d6F9TkojVDjdnaKobKEVSLfUKKB8kyrhCuHDujXBe%2B%2Bjf9lNcWG3cRTrcCWqLYLSfdLoyiTVnoHZpDpIbTNcJ39S5tqQnm9X0%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231123T051143Z&X-Amz-SignedHeaders=host&X-Amz-Expires=43200&X-Amz-Credential=ASIA5WIXJNYUE46PMNET%2F20231123%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=e8ce0f12fe71a0b723beb8f0d1c7ca422ed7d6668b983cd7d2bbced29aecd9c2" type="video/mp4">
+    Tu navegador no soporta la reproducción de videos.
+  </video>
+</div>
+
+
+
+<div class="info-box1">
+  <h2>Enlaces de interes</h2>
+  <ul>
+    <li><a href="https://es.wikipedia.org/wiki/Metaverso" target="_blank">Artículo de Wikipedia sobre Metaverso</a></li>
+    <li><a href="https://gbm.com/academy/el-metaverso-la-importancia-de-mirar-hacia-el-futuro/#:~:text=El%20metaverso%20tiene%20el%20potencial,propias%20aplicaciones%20basadas%20en%20el" target="_blank">El metaverso y su importancia</a></li>
+    <li><a href="https://mitsoftware.com/maas-meta-as-a-service-metaverse/#:~:text=El%20metaverso%20se%20refiere%20al,solo%20una%20conexi%C3%B3n%20a%20internet." target="_blank">El metaverso: qué es y cómo nos cambiará la vida</a></li>
+  </ul>
+</div>
+
+
+<!-- Contenedor para el efecto de partículas en movimiento -->
+<div id="particles-container">
+    <div id="particles"></div>
+  </div>
+  
+  <!-- Script para la animación de partículas -->
+  <script>
+    // Función para crear partículas
+    function createParticle() {
+      const particle = document.createElement('span');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDuration = Math.random() * 4 + 2 + 's';
+      document.getElementById('particles').appendChild(particle);
+      setTimeout(() => {
+        particle.remove();
+      }, 5000);
+    }
+  
+    // Crear partículas cada cierto intervalo
+    setInterval(createParticle, 300);
+  </script>
+  
+  </body>
+  </html>
