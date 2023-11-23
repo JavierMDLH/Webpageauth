@@ -4,77 +4,146 @@
   <title>Control de Acceso</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 50px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
     }
 
     h1 {
       text-align: center;
+      margin-bottom: 20px;
+      color: #333;
     }
 
     form {
       width: 300px;
       margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    label, input[type="text"], input[type="password"], input[type="button"] {
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
       display: block;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="button"] {
+      width: calc(100% - 22px);
+      padding: 10px;
       margin-bottom: 10px;
-      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       box-sizing: border-box;
+      font-size: 14px;
     }
 
     input[type="button"] {
       background-color: #4CAF50;
       color: white;
       border: none;
-      padding: 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
       cursor: pointer;
-      width: 100%;
+      transition: background-color 0.3s ease;
     }
 
-    #loginResult, #registerResult {
-      margin-top: 20px;
-      text-align: center;
+    input[type="button"]:hover {
+      background-color: #45a049;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: flex-end;
+      background-color: #4CAF50;
+      padding: 10px 0;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      border: none;
+      background: none;
+      transition: color 0.3s ease;
+    }
+
+    .navbar button:hover {
+      color: #333;
+    }
+
+    .active {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Iniciar Sesión</h1>
-  <form id="loginForm">
-    <label for="username">Usuario:</label>
-    <input type="text" id="username" name="username">
+  <div class="navbar">
+    <button id="loginBtn" class="active" onclick="showLogin()">Iniciar Sesión</button>
+    <button id="registerBtn" onclick="showRegister()">Registrarse</button>
+  </div>
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password">
+  <!-- Inicio de sesión -->
+  <div id="loginForm" class="">
+    <h1>Iniciar Sesión</h1>
+    <form id="loginFormFields">
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" name="username">
 
-    <input type="button" value="Iniciar Sesión" onclick="login()">
-  </form>
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password">
 
-  <div id="loginResult"></div>
+      <input type="button" value="Iniciar Sesión" onclick="login()">
+    </form>
+    <div id="loginResult"></div>
+  </div>
 
-  <h1>Registrarse</h1>
-  <form id="registerForm">
-    <label for="newUsername">Nuevo Usuario:</label>
-    <input type="text" id="newUsername" name="newUsername">
+  <!-- Registro -->
+  <div id="registerForm" class="hidden">
+    <h1>Registrarse</h1>
+    <form id="registerFormFields">
+      <label for="newUsername">Nuevo Usuario:</label>
+      <input type="text" id="newUsername" name="newUsername">
 
-    <label for="newPassword">Nueva Contraseña:</label>
-    <input type="password" id="newPassword" name="newPassword">
+      <label for="newPassword">Nueva Contraseña:</label>
+      <input type="password" id="newPassword" name="newPassword">
 
-    <label for="newEmail">Correo Electrónico:</label>
-    <input type="text" id="newEmail" name="newEmail">
+      <label for="newEmail">Correo Electrónico:</label>
+      <input type="text" id="newEmail" name="newEmail">
 
-    <input type="button" value="Registrarse" onclick="register()">
-  </form>
-
-<div id="registerResult"></div>
+      <input type="button" value="Registrarse" onclick="register()">
+    </form>
+    <div id="registerResult"></div>
+  </div>
 
   <script>
+    function showLogin() {
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('registerForm').classList.add('hidden');
+      document.getElementById('loginBtn').classList.add('active');
+      document.getElementById('registerBtn').classList.remove('active');
+    }
+
+    function showRegister() {
+      document.getElementById('loginForm').classList.add('hidden');
+      document.getElementById('registerForm').classList.remove('hidden');
+      document.getElementById('loginBtn').classList.remove('active');
+      document.getElementById('registerBtn').classList.add('active');
+    }
+
     function login() {
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
@@ -84,7 +153,12 @@
         fetch(`/login?username=${username}&password=${password}`)
           .then(response => response.text())
           .then(data => {
-            document.getElementById("loginResult").innerHTML = data;
+            if (data === 'Inicio de sesión exitoso') {
+              // Redirige a una nueva página después de un inicio de sesión exitoso
+              window.location.href = '/index2.html'; // Reemplaza 'nueva_pagina.html' con la página que desees cargar
+            } else {
+              document.getElementById("loginResult").innerHTML = data;
+            }
           })
           .catch(err => {
             console.error(err);
@@ -95,7 +169,7 @@
       }
     }
 
-    // Llamada AJAX para registro
+
     function register() {
       var newUsername = document.getElementById("newUsername").value;
       var newPassword = document.getElementById("newPassword").value;
@@ -116,7 +190,6 @@
         document.getElementById("registerResult").innerHTML = 'Por favor, completa todos los campos';
       }
     }
-
   </script>
 </body>
 </html>
