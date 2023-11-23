@@ -78,7 +78,7 @@ app.get('/register', (req, res) => {
 
 
 // Iniciar el servidor en el puerto 3000
-const PORT = 3000;
+const PORT = 4000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
 });
