@@ -54,7 +54,7 @@ app.get('/register', (req, res) => {
   const checkQuery = `SELECT * FROM users WHERE username='${newUsername}'`;
   connection.query(checkQuery, (err, results) => {
     if (err) {
-      res.status(500).send('Error de servidor');
+      res.status(500).send(`Error de servidor al verificar usuario existente: ${err.message}`);
       return;
     }
 
@@ -67,7 +67,7 @@ app.get('/register', (req, res) => {
     const registerQuery = `INSERT INTO users (username, password, email) VALUES ('${newUsername}', '${newPassword}', '${newEmail}')`;
     connection.query(registerQuery, (err, results) => {
       if (err) {
-        res.status(500).send('Error de servidor al registrar usuario');
+        res.status(500).send(`Error de servidor al registrar usuario: ${err.message}`);
         return;
       }
       
@@ -75,6 +75,7 @@ app.get('/register', (req, res) => {
     });
   });
 });
+
 
 // Iniciar el servidor en el puerto 3000
 const PORT = 3000;
