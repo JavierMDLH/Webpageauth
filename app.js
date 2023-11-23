@@ -25,7 +25,7 @@ app.get('/login', (req, res) => {
   const { username, password } = req.query;
 
   // Verifica las credenciales en la base de datos
-  const query = `SELECT * FROM users WHERE username='${username}' AND password='${password}'`;
+  const query = `SELECT * FROM usuarios WHERE username='${username}' AND password='${password}'`;
   
   connection.query(query, (err, results) => {
     if (err) {
@@ -51,7 +51,7 @@ app.get('/register', (req, res) => {
   }
 
   // Verifica si el usuario ya existe en la base de datos
-  const checkQuery = `SELECT * FROM users WHERE username='${newUsername}'`;
+  const checkQuery = `SELECT * FROM usuarios WHERE username='${newUsername}'`;
   connection.query(checkQuery, (err, results) => {
     if (err) {
       res.status(500).send(`Error de servidor al verificar usuario existente: ${err.message}`);
@@ -64,7 +64,7 @@ app.get('/register', (req, res) => {
     }
 
     // Si el usuario no existe, procede con el registro
-    const registerQuery = `INSERT INTO users (username, password, email) VALUES ('${newUsername}', '${newPassword}', '${newEmail}')`;
+    const registerQuery = `INSERT INTO usuarios (username, password, email) VALUES ('${newUsername}', '${newPassword}', '${newEmail}')`;
     connection.query(registerQuery, (err, results) => {
       if (err) {
         res.status(500).send(`Error de servidor al registrar usuario: ${err.message}`);
