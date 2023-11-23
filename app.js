@@ -42,8 +42,9 @@ app.get('/login', (req, res) => {
 });
 
 // Ruta para el registro de usuarios
+// Ruta para el registro de usuarios
 app.get('/register', (req, res) => {
-  const { newUsername, newPassword } = req.query;
+  const { newUsername, newPassword, newEmail } = req.query;
 
   // Verifica si el usuario ya existe en la base de datos
   const checkQuery = `SELECT * FROM users WHERE username='${newUsername}'`;
@@ -59,7 +60,7 @@ app.get('/register', (req, res) => {
     }
 
     // Si el usuario no existe, procede con el registro
-    const registerQuery = `INSERT INTO users (username, password) VALUES ('${newUsername}', '${newPassword}')`;
+    const registerQuery = `INSERT INTO users (username, password, email) VALUES ('${newUsername}', '${newPassword}', '${newEmail}')`;
     connection.query(registerQuery, (err, results) => {
       if (err) {
         res.status(500).send('Error de servidor');
