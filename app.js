@@ -42,7 +42,6 @@ app.get('/login', (req, res) => {
 });
 
 // Ruta para el registro de usuarios
-// Ruta para el registro de usuarios
 app.get('/register', (req, res) => {
   const { newUsername, newPassword, newEmail } = req.query;
 
