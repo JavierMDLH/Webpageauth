@@ -95,13 +95,15 @@
       }
     }
 
+    // Llamada AJAX para registro
     function register() {
       var newUsername = document.getElementById("newUsername").value;
       var newPassword = document.getElementById("newPassword").value;
+      var newEmail = document.getElementById("newEmail").value;
 
       // Llamada AJAX para registro
-      if (newUsername && newPassword) {
-        fetch(`/register?newUsername=${newUsername}&newPassword=${newPassword}`)
+      if (newUsername && newPassword && newEmail) {
+        fetch(`/register?newUsername=${newUsername}&newPassword=${newPassword}&newEmail=${newEmail}`)
           .then(response => response.text())
           .then(data => {
             document.getElementById("registerResult").innerHTML = data;
@@ -114,6 +116,7 @@
         document.getElementById("registerResult").innerHTML = 'Por favor, completa todos los campos';
       }
     }
+
   </script>
 </body>
 </html>
