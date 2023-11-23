@@ -46,3 +46,8 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en el puerto ${PORT}`);
 });
+
+// Ruta para mostrar una página HTML
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
