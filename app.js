@@ -45,6 +45,11 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
   const { newUsername, newPassword, newEmail } = req.query;
 
+  if (!newUsername || !newPassword || !newEmail) {
+    res.status(400).send('Por favor, completa todos los campos');
+    return;
+  }
+
   // Verifica si el usuario ya existe en la base de datos
   const checkQuery = `SELECT * FROM users WHERE username='${newUsername}'`;
   connection.query(checkQuery, (err, results) => {
@@ -62,7 +67,7 @@ app.get('/register', (req, res) => {
     const registerQuery = `INSERT INTO users (username, password, email) VALUES ('${newUsername}', '${newPassword}', '${newEmail}')`;
     connection.query(registerQuery, (err, results) => {
       if (err) {
-        res.status(500).send('Error de servidor');
+        res.status(500).send('Error de servidor al registrar usuario');
         return;
       }
       
