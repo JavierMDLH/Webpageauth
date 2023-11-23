@@ -87,5 +87,8 @@ app.listen(PORT, () => {
 // Ruta para mostrar una página HTML
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/index2', (req, res) => {
   res.sendFile(__dirname + '/index2.html');
 });
