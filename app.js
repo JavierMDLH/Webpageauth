@@ -1,7 +1,11 @@
 const express = require('express');
+const path = require('path');
 const mysql = require('mysql');
 
 const app = express();
+
+// Permitir acceso a archivos estaticos
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
 // Configuración de la conexión a la base de datos RDS
 const connection = mysql.createConnection({
