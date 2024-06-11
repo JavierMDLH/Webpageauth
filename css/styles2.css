@@ -48,6 +48,7 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   background: linear-gradient(45deg, #4CAF50, #2196F3);
   -webkit-background-clip: text;
+  background-clip:calc();
   -webkit-text-fill-color: transparent;
 }
 @keyframes colorChange {
