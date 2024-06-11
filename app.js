@@ -5,10 +5,10 @@ const app = express();
 
 // Configuración de la conexión a la base de datos RDS
 const connection = mysql.createConnection({
-  host: 'database.cydkk4u9vzj2.us-east-1.rds.amazonaws.com',
+  host: '127.0.0.1',
   user: 'admin',
-  password: 'javier3021194',
-  database: 'proyecto2',
+  password: 'password',
+  database: 'prueba',
 });
 
 // Conexión a la base de datos
